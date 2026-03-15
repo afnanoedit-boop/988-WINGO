@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>988 WINGO</title>
+<style>
+body{
+font-family: Arial;
+background:#0aa38f;
+text-align:center;
+color:white;
+}
+.box{
+background:white;
+color:black;
+width:300px;
+margin:auto;
+padding:20px;
+border-radius:10px;
+}
+button{
+padding:10px 20px;
+margin:5px;
+border:none;
+border-radius:5px;
+font-size:16px;
+}
+.green{background:green;color:white;}
+.red{background:red;color:white;}
+.violet{background:purple;color:white;}
+</style>
+</head>
+
+<body>
+
+<h1>988 WINGO</h1>
+
+<div class="box">
+
+<h2>Timer: <span id="timer">60</span>s</h2>
+
+<h3>Choose Color</h3>
+
+<button class="green" onclick="bet('Green')">Green</button>
+<button class="red" onclick="bet('Red')">Red</button>
+<button class="violet" onclick="bet('Violet')">Violet</button>
+
+<h3 id="result">Result: Waiting...</h3>
+
+</div>
+
+<script>
+
+let time = 60;
+
+setInterval(function(){
+time--;
+document.getElementById("timer").innerHTML=time;
+
+if(time==0){
+generateResult();
+time=60;
+}
+
+},1000);
+
+function generateResult(){
+
+let number=Math.floor(Math.random()*10);
+let color="";
+
+if([1,3,7,9].includes(number)) color="Green";
+else if([2,4,6,8].includes(number)) color="Red";
+else color="Violet";
+
+document.getElementById("result").innerHTML="Result: "+number+" ("+color+")";
+
+}
+
+function bet(color){
+alert("You bet on "+color);
+}
+
+</script>
+
+</body>
+</html>
